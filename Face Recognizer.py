@@ -14,6 +14,7 @@ import time
 import distutils
 import sklearn.neighbors.typedefs
 import configparser
+import screeninfo
 
 
 # Load the Knn model
@@ -116,6 +117,7 @@ def face_recognizer():
     This function detects and recognises face fetched through web cam feed.
     :return:It displays the image obtained from camera with bounding and text if faces are detected.
     """
+    screen_detail = screeninfo.get_monitors()[0]
     # Initializes a variable for Video Capture
     cap = cv2.VideoCapture(0)
     while True:
@@ -158,8 +160,12 @@ def face_recognizer():
                     image = draw_rectangle(image, (left, top - 30), (right, top), frame_rect_color, True)
                     image = write_text(image, person_name, (left + 6, top - 6), frame_text_color)
 
-
-            cv2.imshow('Frame: Press q to quit the frame', image)
+            window_name = 'Results of Recognition: Press q to quit the window'
+            # Results are displayed in full screen
+            cv2.namedWindow(window_name, cv2.WND_PROP_FULLSCREEN)
+            cv2.moveWindow(window_name, screen_detail.x - 1, screen_detail.y - 1)
+            cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+            cv2.imshow(window_name, image)
             # Break the loop when 'q' is pressed
             if cv2.waitKey(25) & 0xff == ord('q'):
                 break
