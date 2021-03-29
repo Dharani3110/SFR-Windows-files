@@ -62,7 +62,7 @@ py==1.8.0
 py2exe==0.9.2.2
 pycodestyle==2.5.0
 pycparser==2.19
-Pygments==2.3.1
+Pygments==2.7.4
 PyInstaller==3.4
 pypiwin32==223
 pytest==4.3.1
