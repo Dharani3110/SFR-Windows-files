@@ -6,7 +6,7 @@ attrs==19.1.0
 auto-py-to-exe==2.5.2
 autopep8==1.4.3
 backcall==0.1.0
-bottle==0.12.16
+bottle==0.12.19
 bottle-websocket==0.2.9
 certifi==2019.3.9
 cffi==1.12.2
